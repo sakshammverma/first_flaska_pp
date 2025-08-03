@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Grades</title>
+</head>
+<body>
+    <h2>Semester: {{ sem_id }}</h2>
+    <form action="/calculate/{{ sem_id }}" method="post">
+    {% for subject, credit in subjects %}
+        <p><strong>{{ subject }} ({{ credit }} credits)</strong></p>
+        Internal Marks (out of 30): 
+        <input type="number" name="internal_{{ loop.index0 }}" min="0" max="30" required><br>
+        External Marks (out of 70): 
+        <input type="number" name="external_{{ loop.index0 }}" min="0" max="70" required><br><br>
+    {% endfor %}
+    <button type="submit">Calculate SGPA</button>
+</form>
+
+</body>
+</html>
